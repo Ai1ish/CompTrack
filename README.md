@@ -192,6 +192,4 @@ Maximum file size:
 ```
 
 If images do not upload, make sure the `uploads/equipment/` folder is writable by Apache.
-=======
-# CompTrack
->>>>>>> f0d48ae09e53fd71c484e8eb72fdd522cc054831
+
