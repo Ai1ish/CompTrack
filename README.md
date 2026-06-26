@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # 💻 CompTrack
 
 **Computer Laboratory Inventory Management System**
