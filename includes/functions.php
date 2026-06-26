@@ -7,7 +7,25 @@ if (session_status() === PHP_SESSION_NONE) {
 
 function base_url(string $path = ''): string
 {
-    return '/PHP%20PROJECT/CompTrack/' . ltrim($path, '/');
+    $docRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '');
+    $projectRoot = realpath(dirname(__DIR__));
+
+    if ($docRoot && $projectRoot) {
+        $docRoot = str_replace('\\', '/', $docRoot);
+        $projectRoot = str_replace('\\', '/', $projectRoot);
+
+        // Standardize case on Windows for comparison
+        if (stripos($projectRoot, $docRoot) === 0) {
+            $baseDir = substr($projectRoot, strlen($docRoot));
+            $baseDir = '/' . trim($baseDir, '/');
+            if ($baseDir === '/') {
+                $baseDir = '';
+            }
+            return $baseDir . '/' . ltrim($path, '/');
+        }
+    }
+
+    return '/School/PHP-PROJECT_COMPTRACK/' . ltrim($path, '/');
 }
 
 function redirect(string $path): never
